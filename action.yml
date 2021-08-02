@@ -1,0 +1,50 @@
+name: 'JIRA Wizard'
+description: 'Manage JIRA issues from Github and create releases out of it'
+author: 'Dario Blanco'
+branding:
+  icon: 'file-plus'
+  color: 'green'
+inputs:
+  app:
+    description: The application to release and to set as component in the JIRA issues.
+    required: true
+  host:
+    description: The JIRA host
+    required: true
+  email:
+    description: 'The email to authenticate with the Jira and Confluence APIs'
+    required: true
+  apiToken:
+    description: 'The API token related to the email account to interact with Atlassian APIs'
+    required: true
+  projectKey:
+    description: >-
+      The JIRA project key that will reference the pushed release and the given issues.
+      It will be used to detect JIRA issues with [KEY-*] format in the current context.
+    required: true
+  issues:
+    description: >-
+      The JSON formatted list of JIRA issues that belong to the release.
+      If none given, the action will try to find JIRA issues from the context
+      based on the given projectKey.
+    required: false
+    default: '[]'
+  issueKeys:
+    description: >-
+      The JSON formatted list of JIRA issue keys to be parsed in addition to projectKey.
+      Useful in case that issues from different projects need to be considered for a single release.
+    required: false
+    default: '[]'
+  transitionId:
+    description: 'The transition target of the JIRA issues.'
+    required: false
+  version:
+    description: The JIRA version to create, related to the given issues
+    required: false
+  draft:
+    description: True if JIRA version is unpublished
+    required: false
+    default: 'true'
+runs:
+  using: 'node12'
+  main: 'dist/run.js'
