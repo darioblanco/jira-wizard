@@ -23,7 +23,7 @@ on:
       - 'tslint.json'
 
 jobs:
-  unit_test:
+  test:
     name: unit test
     runs-on: ubuntu-latest
     steps:
@@ -33,3 +33,17 @@ jobs:
         run: yarn lint
       - name: Test code
         run: yarn test
+  release:
+    if: github.ref == 'refs/heads/main'
+    needs: test
+    name: release
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout git repository
+        uses: actions/checkout@v2.3.4
+      - name: Create Release
+        uses: darioblanco/jira-wizard@main
+        with:
+          templatePath: RELEASE_DRAFT/default.md
+          token: ${{ github.token }}
+          withV: true
