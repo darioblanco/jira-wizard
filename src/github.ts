@@ -1,7 +1,7 @@
 import * as core from '@actions/core';
 import * as github from '@actions/github';
 
-export function loadIssues(projectKeys: string[]): string[] {
+export function loadIssues(issueRegex: string): string[] {
   const { eventName, payload } = github.context;
   let searchString = '';
   switch (eventName) {
@@ -16,7 +16,7 @@ export function loadIssues(projectKeys: string[]): string[] {
       const pushPayload = payload as { commits: { message: string }[] };
       core.debug(`Found push payload: ${JSON.stringify(pushPayload, null, 2)}`);
       pushPayload.commits.forEach(({ message }) => {
-        searchString.concat(`\n${message}`);
+        searchString = searchString.concat(`\n${message}`);
       });
       break;
     case 'release':
@@ -32,12 +32,11 @@ export function loadIssues(projectKeys: string[]): string[] {
       return [];
   }
   // eslint-disable-next-line @typescript-eslint/prefer-regexp-exec
-  const issueMatches = searchString.match(
-    new RegExp(projectKeys.map((projectKey) => `\\[${projectKey}\\d+\\]`).join('|'), 'gmi'),
-  );
+  const issueMatches = searchString.match(new RegExp(issueRegex, 'gmi'));
   if (!issueMatches) {
     return [];
   }
-  const uniqueMatches = new Set(issueMatches[0]);
-  return [...uniqueMatches];
+  const uniqueMatches = new Set(issueMatches);
+  // Make issue list unique and strip any characters that are not alphanumeric or '-'
+  return [...uniqueMatches].map((match) => match.replace(/[^\d\w-]/g, ''));
 }
