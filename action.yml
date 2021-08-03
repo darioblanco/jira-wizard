@@ -26,7 +26,7 @@ inputs:
     description: >-
       The JSON formatted list of JIRA issues that belong to the release.
       If none given, the action will try to find JIRA issues from the context
-      based on the given projectKey.
+      based on the given issueRegex (or its default).
     required: false
     default: '[]'
   issueRegex:
