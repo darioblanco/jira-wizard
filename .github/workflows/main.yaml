@@ -21,6 +21,7 @@ on:
       - 'tests/*'
       - 'tsconfig.json'
       - 'tslint.json'
+  workflow_dispatch:
 
 jobs:
   test:
@@ -42,7 +43,7 @@ jobs:
       - name: Checkout git repository
         uses: actions/checkout@v2.3.4
       - name: Create Release
-        uses: darioblanco/jira-wizard@main
+        uses: darioblanco/release-wizard@main
         with:
           templatePath: RELEASE_DRAFT/default.md
           token: ${{ github.token }}
