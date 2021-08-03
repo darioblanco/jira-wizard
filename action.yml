@@ -29,12 +29,11 @@ inputs:
       based on the given projectKey.
     required: false
     default: '[]'
-  issueKeys:
+  issueRegex:
     description: >-
-      The JSON formatted list of JIRA issue keys to be parsed in addition to projectKey.
-      Useful in case that issues from different projects need to be considered for a single release.
+      The RegExp pattern to be matched globally for JIRA issues in the given context.
+      If none given, it will automatically search for tasks with `\\[${projectKey}-\\d+\\]` format.
     required: false
-    default: '[]'
   transitionId:
     description: 'The transition target of the JIRA issues.'
     required: false

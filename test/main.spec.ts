@@ -39,8 +39,6 @@ describe('run', () => {
           return projectKey;
         case 'issues':
           return JSON.stringify(issues);
-        case 'issueKeys':
-          return '[]';
         case 'transitionId':
           return transitionId;
         default:
@@ -61,6 +59,7 @@ describe('run', () => {
   });
 
   test('should create an unpublished JIRA release', async () => {
+    const issueRegex = '\\[(TEST1|TEST2)-\\d+\\]';
     (getInput as jest.Mock).mockImplementation((name: string) => {
       switch (name) {
         case 'app':
@@ -75,8 +74,8 @@ describe('run', () => {
           return projectKey;
         case 'issues':
           return '[]';
-        case 'issueKeys':
-          return '[]';
+        case 'issueRegex':
+          return issueRegex;
         case 'version':
           return version;
         default:
@@ -86,7 +85,7 @@ describe('run', () => {
     (loadIssues as jest.Mock).mockReturnValue(issues);
     await run();
     expect(setFailed).not.toBeCalled();
-    expect(loadIssues).toBeCalledWith([projectKey]);
+    expect(loadIssues).toBeCalledWith(issueRegex);
     expect(releaseIssues).toBeCalledWith(
       expect.any(Version3Client),
       app,

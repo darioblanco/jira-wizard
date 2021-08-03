@@ -12,9 +12,9 @@ export async function run(): Promise<void> {
     const email = core.getInput('email');
     const apiToken = core.getInput('apiToken');
     const projectKey = core.getInput('projectKey');
-    const issueKeys = JSON.parse(core.getInput('issues')) as string[];
     const rawIssues = JSON.parse(core.getInput('issues')) as string[];
-    const issues = rawIssues.length === 0 ? loadIssues([projectKey].concat(issueKeys)) : rawIssues;
+    const issueRegex = core.getInput('issueRegex') || `\\[${projectKey}-\\d+\\]`;
+    const issues = rawIssues.length === 0 ? loadIssues(issueRegex) : rawIssues;
     const transitionId = core.getInput('transitionId');
     const version = core.getInput('version') || null;
     const draft = core.getBooleanInput('draft');
