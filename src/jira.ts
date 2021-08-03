@@ -60,17 +60,22 @@ export async function updateIssues(
     });
   }
   for (const issueKey of issues) {
-    await jira.issues.editIssue({
-      issueIdOrKey: issueKey,
-      update: {
-        components: [{ add: component }],
-      },
-    });
-    if (transitionId) {
-      await jira.issues.doTransition({
+    if (issueKey.startsWith(projectKey)) {
+      // Only edit issues for the matching project key
+      // - If there are multiple project keys, the transition id might be different
+      // - The component is only created and ensured in the main project key
+      await jira.issues.editIssue({
         issueIdOrKey: issueKey,
-        transition: { id: transitionId, isGlobal: true, isConditional: false },
+        update: {
+          components: [{ add: component }],
+        },
       });
+      if (transitionId) {
+        await jira.issues.doTransition({
+          issueIdOrKey: issueKey,
+          transition: { id: transitionId, isGlobal: true, isConditional: false },
+        });
+      }
     }
   }
 }
