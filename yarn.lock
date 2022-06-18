@@ -2586,13 +2586,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"atlassian-jwt@npm:^2.0.1":
-  version: 2.0.1
-  resolution: "atlassian-jwt@npm:2.0.1"
+"atlassian-jwt@npm:^2.0.2":
+  version: 2.0.2
+  resolution: "atlassian-jwt@npm:2.0.2"
   dependencies:
     jsuri: ^1.3.1
-    lodash: ^4.17.11
-  checksum: ac5f2296ea795fc9385853cc553314f56d681a4ae16961f005bf8fc82f997a06ba6d0d9fd148f77724d10a3d23f041de4fc90dfde13998d0ebb2df243494a993
+    lodash: ^4.17.21
+  checksum: 38a578259341fbd1b2ac211bc56479a1ed6ffd93d4ecedc444ddcdb11a781c07e9b9c00c7fb8534533714f6a4167dc726361540dcbfff6b6c19bb16f3b759c99
   languageName: node
   linkType: hard
 
@@ -2610,12 +2610,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"axios@npm:^0.21.1":
-  version: 0.21.1
-  resolution: "axios@npm:0.21.1"
+"axios@npm:^0.27.2":
+  version: 0.27.2
+  resolution: "axios@npm:0.27.2"
   dependencies:
-    follow-redirects: ^1.10.0
-  checksum: c87915fa0b18c15c63350112b6b3563a3e2ae524d7707de0a73d2e065e0d30c5d3da8563037bc29d4cc1b7424b5a350cb7274fa52525c6c04a615fe561c6ab11
+    follow-redirects: ^1.14.9
+    form-data: ^4.0.0
+  checksum: 38cb7540465fe8c4102850c4368053c21683af85c5fdf0ea619f9628abbcb59415d1e22ebc8a6390d2bbc9b58a9806c874f139767389c862ec9b772235f06854
   languageName: node
   linkType: hard
 
@@ -4085,7 +4086,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"execa@npm:^4.0.0, execa@npm:^4.0.2":
+"execa@npm:^4.0.0":
   version: 4.1.0
   resolution: "execa@npm:4.1.0"
   dependencies:
@@ -4285,13 +4286,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"follow-redirects@npm:^1.10.0":
-  version: 1.14.1
-  resolution: "follow-redirects@npm:1.14.1"
+"follow-redirects@npm:^1.14.9":
+  version: 1.15.1
+  resolution: "follow-redirects@npm:1.15.1"
   peerDependenciesMeta:
     debug:
       optional: true
-  checksum: 7381a55bdc6951c5c1ab73a8da99d9fa4c0496ce72dba92cd2ac2babe0e3ebde9b81c5bca889498ad95984bc773d713284ca2bb17f1b1e1416e5f6531e39a488
+  checksum: 6aa4e3e3cdfa3b9314801a1cd192ba756a53479d9d8cca65bf4db3a3e8834e62139245cd2f9566147c8dfe2efff1700d3e6aefd103de4004a7b99985e71dd533
   languageName: node
   linkType: hard
 
@@ -5869,7 +5870,7 @@ fsevents@^2.3.2:
     jest: ^27.2.5
     jest-config: ^27.2.5
     jest-environment-node: ^27.2.5
-    jira.js: ^2.5.0
+    jira.js: ^2.15.2
     prettier: ^2.4.1
     prettier-eslint: ^13.0.0
     pretty-quick: ^3.1.1
@@ -5882,16 +5883,16 @@ fsevents@^2.3.2:
   languageName: unknown
   linkType: soft
 
-"jira.js@npm:^2.5.0":
-  version: 2.5.0
-  resolution: "jira.js@npm:2.5.0"
+"jira.js@npm:^2.15.2":
+  version: 2.15.2
+  resolution: "jira.js@npm:2.15.2"
   dependencies:
-    atlassian-jwt: ^2.0.1
-    axios: ^0.21.1
+    atlassian-jwt: ^2.0.2
+    axios: ^0.27.2
     form-data: ^4.0.0
     oauth: ^0.9.15
-    telemetry.jira.js: <2
-  checksum: b5b249d842b9c6d4599b666f474ce712af9ed6264949bf36aa67ecb0a3ffe8e183f7c5c62f4b8c36a79d1adfffd00f8322e7f765a08c2a6b55fbbb247b1bb540
+    tslib: ^2.4.0
+  checksum: e9459f7824f53ab27e6f654dd83ade70a44bc5ff32c9436e1ba3d97585006e971555caa3eeca457fc038e676367c280fdba1412d5d3331a50578d6a74a2ff796
   languageName: node
   linkType: hard
 
@@ -6236,7 +6237,7 @@ fsevents@^2.3.2:
   languageName: node
   linkType: hard
 
-"lodash@npm:4.x, lodash@npm:^4.17.11, lodash@npm:^4.17.19, lodash@npm:^4.17.21":
+"lodash@npm:4.x, lodash@npm:^4.17.19, lodash@npm:^4.17.21":
   version: 4.17.21
   resolution: "lodash@npm:4.17.21"
   checksum: eb835a2e51d381e561e508ce932ea50a8e5a68f4ebdd771ea240d3048244a8d13658acbd502cd4829768c56f2e16bdd4340b9ea141297d472517b83868e677f7
@@ -6280,13 +6281,6 @@ fsevents@^2.3.2:
   dependencies:
     yallist: ^4.0.0
   checksum: f97f499f898f23e4585742138a22f22526254fdba6d75d41a1c2526b3b6cc5747ef59c5612ba7375f42aca4f8461950e925ba08c991ead0651b4918b7c978297
-  languageName: node
-  linkType: hard
-
-"macos-release@npm:^2.5.0":
-  version: 2.5.0
-  resolution: "macos-release@npm:2.5.0"
-  checksum: 57379ba354449898ceca91ca8f1ae4d0b2c45671e8a5200d29054a77b462a0319eb3dcb8a8b6bbe2257079cf682550abcfd8a6214a60ac78e4a71c007df1fc85
   languageName: node
   linkType: hard
 
@@ -6648,15 +6642,6 @@ fsevents@^2.3.2:
   languageName: node
   linkType: hard
 
-"nodejs-user-agent@npm:^1.0.0":
-  version: 1.0.0
-  resolution: "nodejs-user-agent@npm:1.0.0"
-  dependencies:
-    os-name: ^4.0.0
-  checksum: d8a931f883e92002626025b4896fd80dff3dae3a5408311c8513553e167ea4e9d26a79f19274feb0e9454b2ec84d1f395d593ce856fef5fd5cc574623fb8d06a
-  languageName: node
-  linkType: hard
-
 "nopt@npm:^4.0.1":
   version: 4.0.1
   resolution: "nopt@npm:4.0.1"
@@ -6887,16 +6872,6 @@ fsevents@^2.3.2:
   version: 1.0.2
   resolution: "os-homedir@npm:1.0.2"
   checksum: af609f5a7ab72de2f6ca9be6d6b91a599777afc122ac5cad47e126c1f67c176fe9b52516b9eeca1ff6ca0ab8587fe66208bc85e40a3940125f03cdb91408e9d2
-  languageName: node
-  linkType: hard
-
-"os-name@npm:^4.0.0":
-  version: 4.0.1
-  resolution: "os-name@npm:4.0.1"
-  dependencies:
-    macos-release: ^2.5.0
-    windows-release: ^4.0.0
-  checksum: 507ae75979ec410b5fccaddddc7e8afb3f9fd096e902230d8ae940590513e64fce6fe25fd1ccc410ec89defc78b5593d71cb1c323e546621c210c4a7086c7399
   languageName: node
   linkType: hard
 
@@ -8283,16 +8258,6 @@ fsevents@^2.3.2:
   languageName: node
   linkType: hard
 
-"telemetry.jira.js@npm:<2":
-  version: 1.1.1
-  resolution: "telemetry.jira.js@npm:1.1.1"
-  dependencies:
-    node-fetch: ^2.6.1
-    nodejs-user-agent: ^1.0.0
-  checksum: 85212296893bd9f6349ab0acbf2254db69ecc17459741e91bf3a0cb109fe09fe28441e9052f64f614c2bcfba953e9b82fff0e35a3cc181bded13feaca9740866
-  languageName: node
-  linkType: hard
-
 "terminal-link@npm:^2.0.0":
   version: 2.1.1
   resolution: "terminal-link@npm:2.1.1"
@@ -8567,6 +8532,13 @@ fsevents@^2.3.2:
   version: 2.3.1
   resolution: "tslib@npm:2.3.1"
   checksum: de17a98d4614481f7fcb5cd53ffc1aaf8654313be0291e1bfaee4b4bb31a20494b7d218ff2e15017883e8ea9626599b3b0e0229c18383ba9dce89da2adf15cb9
+  languageName: node
+  linkType: hard
+
+"tslib@npm:^2.4.0":
+  version: 2.4.0
+  resolution: "tslib@npm:2.4.0"
+  checksum: 8c4aa6a3c5a754bf76aefc38026134180c053b7bd2f81338cb5e5ebf96fefa0f417bff221592bf801077f5bf990562f6264fecbc42cd3309b33872cb6fc3b113
   languageName: node
   linkType: hard
 
@@ -9085,15 +9057,6 @@ typescript@^4.4.3:
   version: 2.0.0
   resolution: "wildcard@npm:2.0.0"
   checksum: 1f4fe4c03dfc492777c60f795bbba597ac78794f1b650d68f398fbee9adb765367c516ebd4220889b6a81e9626e7228bbe0d66237abb311573c2ee1f4902a5ad
-  languageName: node
-  linkType: hard
-
-"windows-release@npm:^4.0.0":
-  version: 4.0.0
-  resolution: "windows-release@npm:4.0.0"
-  dependencies:
-    execa: ^4.0.2
-  checksum: 77c87d332d9e8ad94a72844c0bee169babd63ab06636521fc6ffacb2f1fb2ec3f38b81bc3fcb53ec76b57c1add33348c16660a38ac6aed381190d9c2b95c39e6
   languageName: node
   linkType: hard
 
