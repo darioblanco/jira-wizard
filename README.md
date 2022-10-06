@@ -74,6 +74,7 @@ jobs:
           projectKey: MYPROJECT
           version: 1.0.0
           draft: false
+          description: "optional description"
 ```
 
 Assign tasks to the `app` component manually.
