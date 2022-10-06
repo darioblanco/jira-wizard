@@ -8,7 +8,7 @@ export async function releaseIssues(
   issues: string[],
   version: string,
   draft: boolean,
-  description: ?string,
+  description: string | undefined,
 ): Promise<void> {
   const versionName = `${app}/${version.replace('v', '')}`;
   const project = await jira.projects.getProject({ projectIdOrKey: projectKey });
@@ -20,6 +20,7 @@ export async function releaseIssues(
     name: versionName,
     projectId: Number(project.id), // cast to number
     released: !draft,
+    description,
   };
   let jiraVersion = projectVersions.values?.pop();
   if (!jiraVersion) {

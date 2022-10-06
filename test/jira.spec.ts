@@ -10,6 +10,7 @@ describe('jira', () => {
   const issues = ['PROJ-1', 'JIRA-2', 'JIRA-3'];
   const version = '1.0.0';
   const draft = true;
+  const description = 'test description';
 
   const project = {
     id: 1,
@@ -43,7 +44,7 @@ describe('jira', () => {
           getProjectVersionsPaginated,
         },
       } as unknown as Version3Client;
-      expect(await releaseIssues(jiraMock, app, projectKey, issues, version, draft)).toBe(
+      expect(await releaseIssues(jiraMock, app, projectKey, issues, version, draft, description)).toBe(
         undefined,
       );
       expect(getProjectVersionsPaginated).toBeCalledWith({
@@ -54,6 +55,7 @@ describe('jira', () => {
         name: jiraVersionName,
         projectId: jiraVersion.id,
         released: false,
+        description,
       });
       issues.forEach((issue) =>
         expect(editIssue).toBeCalledWith({
@@ -76,7 +78,7 @@ describe('jira', () => {
           updateVersion,
         },
       } as unknown as Version3Client;
-      expect(await releaseIssues(jiraMock, app, projectKey, issues, version, draft)).toBe(
+      expect(await releaseIssues(jiraMock, app, projectKey, issues, version, draft, description)).toBe(
         undefined,
       );
       expect(getProjectVersionsPaginated).toBeCalledWith({
@@ -88,6 +90,7 @@ describe('jira', () => {
         name: jiraVersionName,
         projectId: jiraVersion.id,
         released: false,
+        description,
       });
       issues.forEach((issue) =>
         expect(editIssue).toBeCalledWith({

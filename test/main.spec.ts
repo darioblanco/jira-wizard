@@ -93,6 +93,7 @@ describe('run', () => {
       issues,
       version,
       true,
+      undefined, // handle case when description is not passed
     );
     expect(updateIssues).toBeCalledWith(
       expect.any(Version3Client),
