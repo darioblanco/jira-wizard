@@ -8,6 +8,7 @@ export async function releaseIssues(
   issues: string[],
   version: string,
   draft: boolean,
+  description: ?string,
 ): Promise<void> {
   const versionName = `${app}/${version.replace('v', '')}`;
   const project = await jira.projects.getProject({ projectIdOrKey: projectKey });
@@ -15,21 +16,20 @@ export async function releaseIssues(
     projectIdOrKey: projectKey,
     query: versionName,
   });
+  const commonProps = {
+    name: versionName,
+    projectId: Number(project.id), // cast to number
+    released: !draft,
+  };
   let jiraVersion = projectVersions.values?.pop();
   if (!jiraVersion) {
     core.debug(`JIRA version ${versionName} not found. Creating...`);
-    jiraVersion = await jira.projectVersions.createVersion({
-      name: versionName,
-      projectId: +project.id, // cast to number
-      released: !draft,
-    });
+    jiraVersion = await jira.projectVersions.createVersion(commonProps);
   } else {
     core.debug(`JIRA version ${versionName} found. Updating...`);
     await jira.projectVersions.updateVersion({
       id: jiraVersion.id as string,
-      name: versionName,
-      projectId: +project.id, // cast to number
-      released: !draft,
+      ...commonProps,
     });
   }
 
