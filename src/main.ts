@@ -18,6 +18,7 @@ export async function run(): Promise<void> {
     const transitionId = core.getInput('transitionId');
     const version = core.getInput('version') || null;
     const draft = core.getBooleanInput('draft');
+    const description = core.getInput('description');
     core.debug(
       `Configuration: ${JSON.stringify({
         app,
@@ -29,6 +30,7 @@ export async function run(): Promise<void> {
         transitionId,
         version,
         draft,
+        description,
       })}`,
     );
 
@@ -43,7 +45,7 @@ export async function run(): Promise<void> {
       telemetry: false,
     });
     if (version) {
-      await releaseIssues(jira, app, projectKey, issues, version, draft);
+      await releaseIssues(jira, app, projectKey, issues, version, draft, description);
     }
     await updateIssues(jira, app, projectKey, issues, transitionId);
   } catch (error) {
