@@ -19,7 +19,7 @@
   "dependencies": {
     "@actions/core": "^1.4.0",
     "@actions/github": "^5.0.0",
-    "jira.js": "^2.5.0"
+    "jira.js": "^2.20.1"
   },
   "devDependencies": {
     "#": "link:./test",
